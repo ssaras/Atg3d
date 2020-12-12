@@ -22,7 +22,7 @@ function init() {
     cameraTarget = new THREE.Vector3( 0, - 0.25, 0 );
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0x72645b );
+    // scene.background = new THREE.Color( 0x72645b );
     scene.fog = new THREE.Fog( 0x72645b, 2, 15 );
 
 
@@ -36,15 +36,14 @@ function init() {
     );
     plane.rotation.x = - Math.PI / 2;
     plane.position.y = - 0.5;
-    scene.add( plane );
+    // scene.add( plane );
 
     plane.receiveShadow = true;
 
     const material = new THREE.MeshPhongMaterial( { color: 0xAAAAAA, specular: 0x111111, shininess: 200 } );
     const loader = new STLLoader();
 
-    // Colored binary STL
-    loader.load( '/assets/colored.stl', function ( geometry ) {
+    loader.load( '/assets/brassknuckles.stl', function ( geometry ) {
 
         let meshMaterial = material;
 
@@ -56,9 +55,9 @@ function init() {
 
         const mesh = new THREE.Mesh( geometry, meshMaterial );
 
-        mesh.position.set( 0.5, 0.2, 0 );
-        mesh.rotation.set( - Math.PI / 2, Math.PI / 2, 0 );
-        mesh.scale.set( 0.3, 0.3, 0.3 );
+        mesh.position.set( 0,0,0 );
+        // mesh.rotation.set( - Math.PI / 2, Math.PI / 2, 0 );
+        mesh.scale.set( 0.01, 0.01, 0.01 );
 
         mesh.castShadow = true;
         mesh.receiveShadow = true;
@@ -87,7 +86,7 @@ function init() {
 
     window.addEventListener( 'resize', onWindowResize, false );
 
-    // scene.add( gridHelper );
+    scene.add( gridHelper );
 
 }
 
